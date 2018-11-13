@@ -22,7 +22,7 @@ steps:
             /t:test
             /p:HelixTargetQueues=${{ parameters.helixQueues }}
             /p:HelixAccessToken=${{ parameters.helixToken }}
-            /p:HelixBuild=$(Build.BuildNumber).${{ parameters.targetOS }}.${{ parameters.framework }}.${{ parameters.configuration }}.${{ parameters.archGroup }}
+            /p:HelixBuild=$(Build.BuildNumber)
             /p:TargetOS=${{ parameters.targetOS }}
             /p:ArchGroup=${{ parameters.archGroup }}
             /p:ConfigurationGroup=${{ parameters.configuration }}
