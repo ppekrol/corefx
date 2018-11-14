@@ -6,8 +6,8 @@ resources:
   - container: RhelContainer
     image: microsoft/dotnet-buildtools-prereqs:rhel7_prereqs_2
   - container: AlpineContainer
-    image: microsoft/dotnet-buildtools-prereqs:alpine-3.6-e2521f8-20180716231200
-    # image: santifdezm/alpine:latest
+    # image: microsoft/dotnet-buildtools-prereqs:alpine-3.6-e2521f8-20180716231200
+    image: santifdezm/alpine:latest
 
 variables:
   # Helix target queues need to be separated by +
