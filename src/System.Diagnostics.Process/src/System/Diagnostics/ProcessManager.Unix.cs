@@ -6,7 +6,7 @@ using Microsoft.Win32.SafeHandles;
 using System.Collections.Generic;
 using System.Text;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     internal static partial class ProcessManager
     {

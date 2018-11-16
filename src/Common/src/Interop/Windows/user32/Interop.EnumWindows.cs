@@ -5,13 +5,16 @@
 using System;
 using System.Runtime.InteropServices;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class User32
+    internal partial class Interop
     {
-        internal delegate bool EnumThreadWindowsCallback(IntPtr hWnd, IntPtr lParam);
+        internal partial class User32
+        {
+            internal delegate bool EnumThreadWindowsCallback(IntPtr hWnd, IntPtr lParam);
 
-        [DllImport(Libraries.User32)]
-        public static extern bool EnumWindows(EnumThreadWindowsCallback callback, IntPtr extraData);
+            [DllImport(Interop.Libraries.User32)]
+            public static extern bool EnumWindows(EnumThreadWindowsCallback callback, IntPtr extraData);
+        }
     }
 }

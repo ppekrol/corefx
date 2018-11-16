@@ -5,16 +5,19 @@
 using System;
 using System.Runtime.InteropServices;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Kernel32
+    internal partial class Interop
     {
-        [DllImport(Libraries.Kernel32)]
-        internal static extern unsafe int WideCharToMultiByte(
-            uint CodePage, uint dwFlags, 
-            char* lpWideCharStr, int cchWideChar, 
-            byte* lpMultiByteStr, int cbMultiByte, 
-            IntPtr lpDefaultChar, IntPtr lpUsedDefaultChar);
+        internal partial class Kernel32
+        {
+            [DllImport(Interop.Libraries.Kernel32)]
+            internal static extern unsafe int WideCharToMultiByte(
+                uint CodePage, uint dwFlags,
+                char* lpWideCharStr, int cchWideChar,
+                byte* lpMultiByteStr, int cbMultiByte,
+                IntPtr lpDefaultChar, IntPtr lpUsedDefaultChar);
 
+        }
     }
 }

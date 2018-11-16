@@ -12,7 +12,7 @@ using System.Security;
 using System.Text;
 using System.Threading;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     public partial class Process : IDisposable
     {

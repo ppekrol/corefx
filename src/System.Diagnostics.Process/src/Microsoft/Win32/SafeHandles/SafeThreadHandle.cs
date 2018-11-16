@@ -16,8 +16,9 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Security;
+using Custom.Raven.Interoperability;
 
-namespace Microsoft.Win32.SafeHandles
+namespace Custom.Raven.Microsoft.Win32.SafeHandles
 {
     internal sealed class SafeThreadHandle : SafeHandle
     {

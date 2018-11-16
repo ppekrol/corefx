@@ -5,11 +5,15 @@
 using System;
 using System.Runtime.InteropServices;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class User32
+    internal partial class Interop
     {
-	    [DllImport(Libraries.User32, EntryPoint = "SendMessageTimeoutW")]
-        public static extern IntPtr SendMessageTimeout(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam, int flags, int timeout, out IntPtr pdwResult);
+        internal partial class User32
+        {
+            [DllImport(Libraries.User32, EntryPoint = "SendMessageTimeoutW")]
+            public static extern IntPtr SendMessageTimeout(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam,
+                int flags, int timeout, out IntPtr pdwResult);
+        }
     }
 }

@@ -5,7 +5,7 @@
 using System.ComponentModel;
 using System.Text;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     public partial class ProcessThread
     {

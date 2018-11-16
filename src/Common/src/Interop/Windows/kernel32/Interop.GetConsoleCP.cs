@@ -4,11 +4,14 @@
 
 using System.Runtime.InteropServices;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Kernel32
+    internal partial class Interop
     {
-        [DllImport(Libraries.Kernel32, SetLastError = true)]
-        internal extern static uint GetConsoleCP();
+        internal partial class Kernel32
+        {
+            [DllImport(Interop.Libraries.Kernel32, SetLastError = true)]
+            internal extern static uint GetConsoleCP();
+        }
     }
 }

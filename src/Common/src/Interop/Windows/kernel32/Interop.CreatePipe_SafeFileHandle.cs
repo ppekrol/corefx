@@ -6,11 +6,15 @@ using Microsoft.Win32.SafeHandles;
 using System;
 using System.Runtime.InteropServices;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Kernel32
+    internal partial class Interop
     {
-        [DllImport(Libraries.Kernel32, SetLastError = true)]
-        internal static extern bool CreatePipe(out SafeFileHandle hReadPipe, out SafeFileHandle hWritePipe, ref SECURITY_ATTRIBUTES lpPipeAttributes, int nSize);
+        internal partial class Kernel32
+        {
+            [DllImport(Interop.Libraries.Kernel32, SetLastError = true)]
+            internal static extern bool CreatePipe(out SafeFileHandle hReadPipe, out SafeFileHandle hWritePipe,
+                ref Interop.Kernel32.SECURITY_ATTRIBUTES lpPipeAttributes, int nSize);
+        }
     }
 }

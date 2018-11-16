@@ -5,27 +5,31 @@
 using Microsoft.Win32.SafeHandles;
 using System;
 using System.Runtime.InteropServices;
+using Custom.Raven.Microsoft.Win32.SafeHandles;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Advapi32
+    internal partial class Interop
     {
-        [DllImport(Libraries.Advapi32, SetLastError = true)]
-        internal static extern bool AdjustTokenPrivileges(
-            SafeTokenHandle TokenHandle,
-            bool DisableAllPrivileges,
-            TokenPrivileges NewState,
-            int BufferLength,
-            IntPtr PreviousState,
-            IntPtr ReturnLength
-        );
-
-        [StructLayout(LayoutKind.Sequential)]
-        internal class TokenPrivileges
+        internal partial class Advapi32
         {
-            internal int PrivilegeCount = 1;
-            internal LUID Luid;
-            internal int Attributes = 0;
+            [DllImport(Interop.Libraries.Advapi32, SetLastError = true)]
+            internal static extern bool AdjustTokenPrivileges(
+                SafeTokenHandle TokenHandle,
+                bool DisableAllPrivileges,
+                TokenPrivileges NewState,
+                int BufferLength,
+                IntPtr PreviousState,
+                IntPtr ReturnLength
+            );
+
+            [StructLayout(LayoutKind.Sequential)]
+            internal class TokenPrivileges
+            {
+                internal int PrivilegeCount = 1;
+                internal LUID Luid;
+                internal int Attributes = 0;
+            }
         }
     }
 }

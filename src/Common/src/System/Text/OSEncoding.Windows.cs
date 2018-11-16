@@ -5,8 +5,9 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using Custom.Raven.Interoperability;
 
-namespace System.Text
+namespace Custom.Raven.System.Text
 {
     internal sealed class OSEncoding : Encoding
     {

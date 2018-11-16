@@ -5,7 +5,7 @@
 using System;
 using System.ComponentModel;   
 
-namespace System.Diagnostics 
+namespace Custom.Raven.System.Diagnostics 
 {
     /// <summary>
     ///     DescriptionAttribute marks a property, event, or extender with a

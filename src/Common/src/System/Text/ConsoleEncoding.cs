@@ -2,7 +2,10 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-namespace System.Text
+using System;
+using System.Text;
+
+namespace Custom.Raven.System.Text
 {
     // StreamWriter calls Encoding.GetPreamble() to write the initial bits to the stream.
     // In case of Console we do not want to write the preamble as the user does not expect these bits.

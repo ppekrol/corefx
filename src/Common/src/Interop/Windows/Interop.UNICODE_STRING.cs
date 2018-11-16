@@ -5,22 +5,25 @@
 using System;
 using System.Runtime.InteropServices;
 
-internal static partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    // https://msdn.microsoft.com/en-us/library/windows/desktop/aa380518.aspx
-    // https://msdn.microsoft.com/en-us/library/windows/hardware/ff564879.aspx
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct UNICODE_STRING
+    internal static partial class Interop
     {
-        /// <summary>
-        /// Length, in bytes, not including the the null, if any.
-        /// </summary>
-        internal ushort Length;
+        // https://msdn.microsoft.com/en-us/library/windows/desktop/aa380518.aspx
+        // https://msdn.microsoft.com/en-us/library/windows/hardware/ff564879.aspx
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct UNICODE_STRING
+        {
+            /// <summary>
+            /// Length, in bytes, not including the the null, if any.
+            /// </summary>
+            internal ushort Length;
 
-        /// <summary>
-        /// Max size of the buffer in bytes
-        /// </summary>
-        internal ushort MaximumLength;
-        internal IntPtr Buffer;
+            /// <summary>
+            /// Max size of the buffer in bytes
+            /// </summary>
+            internal ushort MaximumLength;
+            internal IntPtr Buffer;
+        }
     }
 }

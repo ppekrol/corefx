@@ -5,11 +5,14 @@
 using System;
 using System.Runtime.InteropServices;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class User32
+    internal partial class Interop
     {
-        [DllImport(Libraries.User32, SetLastError = true, ExactSpelling = true)]
-        public static extern int GetWindowTextLengthW(IntPtr hWnd);
+        internal partial class User32
+        {
+            [DllImport(Interop.Libraries.User32, SetLastError = true, ExactSpelling = true)]
+            public static extern int GetWindowTextLengthW(IntPtr hWnd);
+        }
     }
 }

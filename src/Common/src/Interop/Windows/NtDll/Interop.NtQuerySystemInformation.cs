@@ -5,14 +5,18 @@
 using System;
 using System.Runtime.InteropServices;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class NtDll
+    internal partial class Interop
     {
-        [DllImport(Libraries.NtDll, CharSet = CharSet.Unicode)]
-        internal static extern int NtQuerySystemInformation(int query, IntPtr dataPtr, int size, out int returnedSize);
+        internal partial class NtDll
+        {
+            [DllImport(Interop.Libraries.NtDll, CharSet = CharSet.Unicode)]
+            internal static extern int NtQuerySystemInformation(int query, IntPtr dataPtr, int size,
+                out int returnedSize);
 
-        internal const int NtQuerySystemProcessInformation = 5;
-        internal const uint STATUS_INFO_LENGTH_MISMATCH = 0xC0000004;
+            internal const int NtQuerySystemProcessInformation = 5;
+            internal const uint STATUS_INFO_LENGTH_MISMATCH = 0xC0000004;
+        }
     }
 }

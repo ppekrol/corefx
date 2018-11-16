@@ -36,7 +36,7 @@
 using System.Threading;
 using System.Text;
 
-namespace System.IO
+namespace Custom.Raven.System.IO
 {
     internal static class StringBuilderCache
     {

@@ -6,29 +6,33 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Advapi32
+    internal partial class Interop
     {
-        [DllImport(Libraries.Advapi32, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = true, BestFitMapping = false, EntryPoint = "CreateProcessWithLogonW")]
-        internal static extern bool CreateProcessWithLogonW(
-            string userName,
-            string domain,
-            IntPtr password,
-            LogonFlags logonFlags,
-            string appName,
-            StringBuilder cmdLine,
-            int creationFlags,
-            IntPtr environmentBlock,
-            string lpCurrentDirectory,
-            ref Interop.Kernel32.STARTUPINFO lpStartupInfo,
-            ref Interop.Kernel32.PROCESS_INFORMATION lpProcessInformation);
-
-        [Flags]
-        internal enum LogonFlags
+        internal partial class Advapi32
         {
-            LOGON_WITH_PROFILE = 0x00000001,
-            LOGON_NETCREDENTIALS_ONLY = 0x00000002
+            [DllImport(Interop.Libraries.Advapi32, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = true,
+                BestFitMapping = false, EntryPoint = "CreateProcessWithLogonW")]
+            internal static extern bool CreateProcessWithLogonW(
+                string userName,
+                string domain,
+                IntPtr password,
+                LogonFlags logonFlags,
+                string appName,
+                StringBuilder cmdLine,
+                int creationFlags,
+                IntPtr environmentBlock,
+                string lpCurrentDirectory,
+                ref Interop.Kernel32.STARTUPINFO lpStartupInfo,
+                ref Interop.Kernel32.PROCESS_INFORMATION lpProcessInformation);
+
+            [Flags]
+            internal enum LogonFlags
+            {
+                LOGON_WITH_PROFILE = 0x00000001,
+                LOGON_NETCREDENTIALS_ONLY = 0x00000002
+            }
         }
     }
 }

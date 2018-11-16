@@ -5,16 +5,19 @@
 using System;
 using System.Runtime.InteropServices;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Kernel32
+    internal partial class Interop
     {
-        [StructLayout(LayoutKind.Sequential)]
-        internal struct SECURITY_ATTRIBUTES
+        internal partial class Kernel32
         {
-            internal uint nLength;
-            internal IntPtr lpSecurityDescriptor;
-            internal BOOL bInheritHandle;
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct SECURITY_ATTRIBUTES
+            {
+                internal uint nLength;
+                internal IntPtr lpSecurityDescriptor;
+                internal Interop.BOOL bInheritHandle;
+            }
         }
     }
 }

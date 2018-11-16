@@ -4,7 +4,7 @@
 
 using System.IO;
 
-namespace System.Text
+namespace Custom.Raven.System.Text
 {
     /// <summary>Provides a reusable reader for reading all of the text from streams.</summary>
     internal sealed class ReusableTextReader

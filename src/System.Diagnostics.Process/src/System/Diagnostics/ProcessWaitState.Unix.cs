@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     // Overview
     // --------

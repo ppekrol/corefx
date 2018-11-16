@@ -4,13 +4,18 @@
 
 using System.Runtime.InteropServices;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Advapi32
+    internal partial class Interop
     {
-        [DllImport(Libraries.Advapi32, CharSet = CharSet.Unicode, SetLastError = true, BestFitMapping = false, EntryPoint = "LookupPrivilegeValueW")]
-        internal static extern bool LookupPrivilegeValue([MarshalAs(UnmanagedType.LPTStr)] string lpSystemName, [MarshalAs(UnmanagedType.LPTStr)] string lpName, out LUID lpLuid);
+        internal partial class Advapi32
+        {
+            [DllImport(Interop.Libraries.Advapi32, CharSet = CharSet.Unicode, SetLastError = true, BestFitMapping = false,
+                EntryPoint = "LookupPrivilegeValueW")]
+            internal static extern bool LookupPrivilegeValue([MarshalAs(UnmanagedType.LPTStr)] string lpSystemName,
+                [MarshalAs(UnmanagedType.LPTStr)] string lpName, out LUID lpLuid);
 
-        internal const string SeDebugPrivilege = "SeDebugPrivilege";
+            internal const string SeDebugPrivilege = "SeDebugPrivilege";
+        }
     }
 }

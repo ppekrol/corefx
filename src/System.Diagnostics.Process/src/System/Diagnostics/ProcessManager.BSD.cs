@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     internal static partial class ProcessManager
     {

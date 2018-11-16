@@ -6,15 +6,18 @@ using Microsoft.Win32.SafeHandles;
 using System;
 using System.Runtime.InteropServices;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Advapi32
+    internal partial class Interop
     {
-        [StructLayout(LayoutKind.Sequential)]
-        internal struct LUID
+        internal partial class Advapi32
         {
-            internal int LowPart;
-            internal int HighPart;
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct LUID
+            {
+                internal int LowPart;
+                internal int HighPart;
+            }
         }
     }
 }

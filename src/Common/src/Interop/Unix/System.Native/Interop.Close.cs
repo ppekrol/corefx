@@ -5,11 +5,14 @@
 using System;
 using System.Runtime.InteropServices;
 
-internal static partial class Interop
+namespace Raven.Interoperability
 {
-    internal static partial class Sys
+    internal static partial class Interop
     {
-        [DllImport(Libraries.SystemNative, EntryPoint = "SystemNative_Close", SetLastError = true)]
-        internal static extern int Close(IntPtr fd);
+        internal static partial class Sys
+        {
+            [DllImport(Interop.Libraries.SystemNative, EntryPoint = "SystemNative_Close", SetLastError = true)]
+            internal static extern int Close(IntPtr fd);
+        }
     }
 }

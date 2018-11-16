@@ -2,17 +2,22 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using Microsoft.Win32.SafeHandles;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 using System.Threading;
+using Custom.Raven.Interoperability;
+using Custom.Raven.Microsoft.Win32.SafeHandles;
+using Custom.Raven.System.Text;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     public partial class Process : IDisposable
     {
@@ -115,7 +120,9 @@ namespace System.Diagnostics
         {
             if (!_watchingForExit)
             {
+#pragma warning disable CA2002 // Do not lock on objects with weak identity.
                 lock (this)
+#pragma warning restore CA2002 // Do not lock on objects with weak identity.
                 {
                     if (!_watchingForExit)
                     {
@@ -574,7 +581,7 @@ namespace System.Diagnostics
                                 commandLine,         // pointer to the command line string
                                 ref unused_SecAttrs, // address to process security attributes, we don't need to inherit the handle
                                 ref unused_SecAttrs, // address to thread security attributes.
-                                true,                // handle inheritance flag
+                                startInfo.InheritHandles,                // handle inheritance flag
                                 creationFlags,       // creation flags
                                 (IntPtr)environmentBlockPtr, // pointer to new environment block
                                 workingDirectory,    // pointer to current directory name

@@ -5,14 +5,17 @@
 using System;
 using System.Runtime.InteropServices;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class User32
+    internal partial class Interop
     {
-        [DllImport(Libraries.User32, CharSet = CharSet.Unicode, ExactSpelling = true)]
-        public static extern int PostMessageW(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam);
+        internal partial class User32
+        {
+            [DllImport(Libraries.User32, CharSet = CharSet.Unicode, ExactSpelling = true)]
+            public static extern int PostMessageW(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam);
 
-        [DllImport(Libraries.User32, CharSet = CharSet.Unicode, ExactSpelling = true)]
-        public static extern int PostMessageW(HandleRef hwnd, int msg, IntPtr wparam, IntPtr lparam);
+            [DllImport(Libraries.User32, CharSet = CharSet.Unicode, ExactSpelling = true)]
+            public static extern int PostMessageW(HandleRef hwnd, int msg, IntPtr wparam, IntPtr lparam);
+        }
     }
 }

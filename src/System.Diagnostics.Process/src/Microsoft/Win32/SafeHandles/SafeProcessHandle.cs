@@ -15,8 +15,9 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Security;
+using Microsoft.Win32.SafeHandles;
 
-namespace Microsoft.Win32.SafeHandles
+namespace Custom.Raven.Microsoft.Win32.SafeHandles
 {
     public sealed partial class SafeProcessHandle : SafeHandleZeroOrMinusOneIsInvalid
     {

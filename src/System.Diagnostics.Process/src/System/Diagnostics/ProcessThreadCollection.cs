@@ -5,7 +5,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     /// <devdoc>
     ///    <para>[To be supplied.]</para>

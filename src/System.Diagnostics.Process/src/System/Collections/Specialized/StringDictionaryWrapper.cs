@@ -2,9 +2,12 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 
-namespace System.Collections.Specialized
+namespace Custom.Raven.System.Collections.Specialized
 {
     // This class is an internal class used by System.Diagnostics.Proccess on property EnvironmentVariables which returns an StringDictionary. Since we need
     // EnvironmentVariables to return a StringDictionary, this is a wrapper to the Environment property in order to get the same comparer behavior on both properties.

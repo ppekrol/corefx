@@ -5,12 +5,16 @@
 using System;
 using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
+using Custom.Raven.Microsoft.Win32.SafeHandles;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class User32
+    internal partial class Interop
     {
-        [DllImport(Libraries.User32)]
-        public static extern int WaitForInputIdle(SafeProcessHandle handle, int milliseconds); 
+        internal partial class User32
+        {
+            [DllImport(Libraries.User32)]
+            public static extern int WaitForInputIdle(SafeProcessHandle handle, int milliseconds);
+        }
     }
 }

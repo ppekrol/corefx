@@ -5,22 +5,29 @@
 using System;
 using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
+using Custom.Raven.Microsoft.Win32.SafeHandles;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Kernel32
+    internal partial class Interop
     {
-        [DllImport(Libraries.Kernel32, CharSet = CharSet.Unicode, SetLastError = true, EntryPoint = "K32GetModuleInformation")]
-        private static extern bool GetModuleInformation(SafeProcessHandle processHandle, IntPtr moduleHandle, out NtModuleInfo ntModuleInfo, int size);
-
-        internal static unsafe bool GetModuleInformation(SafeProcessHandle processHandle, IntPtr moduleHandle, out NtModuleInfo ntModuleInfo) =>
-            GetModuleInformation(processHandle, moduleHandle, out ntModuleInfo, sizeof(NtModuleInfo));
-
-        internal struct NtModuleInfo
+        internal partial class Kernel32
         {
-            internal IntPtr BaseOfDll;
-            internal int SizeOfImage;
-            internal IntPtr EntryPoint;
+            [DllImport(Interop.Libraries.Kernel32, CharSet = CharSet.Unicode, SetLastError = true,
+                EntryPoint = "K32GetModuleInformation")]
+            private static extern bool GetModuleInformation(SafeProcessHandle processHandle, IntPtr moduleHandle,
+                out NtModuleInfo ntModuleInfo, int size);
+
+            internal static unsafe bool GetModuleInformation(SafeProcessHandle processHandle, IntPtr moduleHandle,
+                out NtModuleInfo ntModuleInfo) =>
+                GetModuleInformation(processHandle, moduleHandle, out ntModuleInfo, sizeof(NtModuleInfo));
+
+            internal struct NtModuleInfo
+            {
+                internal IntPtr BaseOfDll;
+                internal int SizeOfImage;
+                internal IntPtr EntryPoint;
+            }
         }
     }
 }

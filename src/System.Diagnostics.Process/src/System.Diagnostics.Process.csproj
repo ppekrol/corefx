@@ -4,10 +4,11 @@
   <PropertyGroup>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F55047F8-E47B-46E3-B221-C23595AFE168}</ProjectGuid>
-    <RootNamespace>System.Diagnostics.Process</RootNamespace>
-    <AssemblyName>System.Diagnostics.Process</AssemblyName>
+    <RootNamespace>Raven.System.Diagnostics.Process</RootNamespace>
+    <AssemblyName>Raven.System.Diagnostics.Process</AssemblyName>
     <DefineConstants Condition="'$(TargetGroup)' != 'uap'">$(DefineConstants);FEATURE_REGISTRY</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RunMatchingRefApiCompat>false</RunMatchingRefApiCompat>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetsFreeBSD)' == 'true' OR '$(TargetsUnknownUnix)' == 'true' ">
     <!-- Suppress unused field warnings when using PlatformNotSupportedException stubs -->
@@ -31,14 +32,20 @@
     <Compile Include="System\Collections\Specialized\DictionaryWrapper.cs" />
     <Compile Include="System\Diagnostics\AsyncStreamReader.cs" />
     <Compile Include="System\Diagnostics\DataReceivedEventArgs.cs" />
-    <Compile Include="System\Diagnostics\Process.cs" />
+    <Compile Include="System\Diagnostics\Process.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="System\Diagnostics\ProcessInfo.cs" />
     <Compile Include="System\Diagnostics\ProcessManager.cs" />
-    <Compile Include="System\Diagnostics\ProcessModule.cs" />
+    <Compile Include="System\Diagnostics\ProcessModule.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="System\Diagnostics\ProcessModuleCollection.cs" />
     <Compile Include="System\Diagnostics\ProcessPriorityClass.cs" />
     <Compile Include="System\Diagnostics\ProcessStartInfo.cs" />
-    <Compile Include="System\Diagnostics\ProcessThread.cs" />
+    <Compile Include="System\Diagnostics\ProcessThread.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="System\Diagnostics\ProcessThreadCollection.cs" />
     <Compile Include="System\Diagnostics\ProcessWindowStyle.cs" />
     <Compile Include="System\Diagnostics\ThreadInfo.cs" />
@@ -277,10 +284,14 @@
     <Compile Include="Microsoft\Win32\SafeHandles\SafeThreadHandle.cs" />
     <Compile Include="Microsoft\Win32\SafeHandles\SafeTokenHandle.cs" />
     <Compile Include="System\Diagnostics\PerformanceCounterLib.cs" />
-    <Compile Include="System\Diagnostics\Process.Windows.cs" />
+    <Compile Include="System\Diagnostics\Process.Windows.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="System\Diagnostics\ProcessManager.Windows.cs" />
     <Compile Include="System\Diagnostics\ProcessStartInfo.Windows.cs" />
-    <Compile Include="System\Diagnostics\ProcessThread.Windows.cs" />
+    <Compile Include="System\Diagnostics\ProcessThread.Windows.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="System\Diagnostics\ProcessThreadTimes.cs" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetsUnix)' == 'true'">
@@ -297,74 +308,11 @@
     <Compile Include="$(CommonPath)\System\IO\StringParser.cs">
       <Link>Common\System\IO\StringParser.cs</Link>
     </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\Interop.Libraries.cs">
-      <Link>Common\Interop\Unix\Interop.Libraries.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\Interop.Errors.cs">
-      <Link>Common\Interop\Unix\Interop.Errors.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.Close.cs">
-      <Link>Common\Interop\Unix\Interop.Close.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.GetHostName.cs">
-      <Link>Common\Interop\Unix\Interop.GetHostName.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.SysConf.cs">
-      <Link>Common\Interop\Unix\Interop.SysConf.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.ForkAndExecProcess.cs">
-      <Link>Common\Interop\Unix\Interop.ForkAndExecProcess.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.GetLine.cs">
-      <Link>Common\Interop\Unix\Interop.GetLine.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.GetPid.cs">
-      <Link>Common\Interop\Unix\Interop.GetPid.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.GetPwUid.cs">
-      <Link>Common\Interop\Unix\Interop.GetPwUid.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.GetSetPriority.cs">
-      <Link>Common\Interop\Unix\Interop.GetSetPriority.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.GetSid.cs">
-      <Link>Common\Interop\Unix\Interop.GetSid.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.Kill.cs">
-      <Link>Common\Interop\Unix\Interop.Kill.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.ReadLink.cs">
-      <Link>Common\Interop\Unix\Interop.ReadLink.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.RegisterForSigChld.cs">
-      <Link>Common\Interop\Unix\Interop.RegisterForRegisterForSigChld.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.ResourceLimits.cs">
-      <Link>Common\Interop\Unix\Interop.ResourceLimits.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.PathConf.cs">
-      <Link>Common\Interop\Unix\Interop.PathConf.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.POpen.cs">
-      <Link>Common\Interop\Unix\Interop.POpen.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.WaitId.cs">
-      <Link>Common\Interop\Unix\Interop.WaitId.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.WaitPid.cs">
-      <Link>Common\Interop\Unix\Interop.WaitPid.cs</Link>
-    </Compile>
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetsLinux)' == 'true'">
     <Compile Include="System\Diagnostics\Process.Linux.cs" />
     <Compile Include="System\Diagnostics\ProcessManager.Linux.cs" />
     <Compile Include="System\Diagnostics\ProcessThread.Linux.cs" />
-    <Compile Include="$(CommonPath)\Interop\Linux\procfs\Interop.ProcFsStat.cs">
-      <Link>Common\Interop\Linux\Interop.ProcFsStat.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.SchedGetSetAffinity.cs">
-      <Link>Common\Interop\Linux\Interop.SchedGetSetAffinity.cs</Link>
-    </Compile>
     <Compile Include="$(CommonPath)\System\Text\ReusableTextReader.cs">
       <Link>Common\System\Text\ReusableTextReader.cs</Link>
     </Compile>
@@ -375,24 +323,17 @@
     <Compile Include="System\Diagnostics\ProcessManager.BSD.cs" />
     <Compile Include="System\Diagnostics\ProcessManager.OSX.cs" />
     <Compile Include="System\Diagnostics\ProcessThread.OSX.cs" />
-    <Compile Include="$(CommonPath)\Interop\OSX\Interop.libproc.cs">
-      <Link>Common\Interop\OSX\Interop.libproc.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\OSX\Interop.Libraries.cs">
-      <Link>Common\Interop\OSX\Interop.Libraries.cs</Link>
-    </Compile>
     <Compile Include="$(CommonPath)\System\StringExtensions.cs">
       <Link>Common\System\StringExtensions.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.GetTimestamp.cs">
-      <Link>Common\Unix\System.Native\Interop.GetTimestamp.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup Condition="'$(TargetGroup)' == 'netcoreapp' AND '$(TargetsWindows)' == 'true'">
     <Compile Include="$(CommonPath)\Interop\Windows\shell32\Interop.ShellExecuteExW.cs">
       <Link>Common\Interop\Windows\shell32\Interop.ShellExecuteExW.cs</Link>
     </Compile>
-    <Compile Include="System\Diagnostics\Process.Win32.cs" />
+    <Compile Include="System\Diagnostics\Process.Win32.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="System\Diagnostics\ProcessManager.Win32.cs" />
     <Compile Include="System\Diagnostics\ProcessStartInfo.Win32.cs" />
   </ItemGroup>
@@ -407,17 +348,8 @@
     <Compile Include="System\Diagnostics\ProcessManager.BSD.cs" />
     <Compile Include="System\Diagnostics\ProcessManager.FreeBSD.cs" />
     <Compile Include="System\Diagnostics\ProcessThread.FreeBSD.cs" />
-    <Compile Include="$(CommonPath)\Interop\BSD\System.Native\Interop.Sysctl.cs">
-      <Link>Common\Interop\BSD\System.Native\Interop.Sysctl.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\FreeBSD\Interop.Process.cs">
-      <Link>Common\Interop\FreeBSD\Interop.Process.cs</Link>
-    </Compile>
     <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.GetTimestamp.cs">
       <Link>Common\Unix\System.Native\Interop.GetTimestamp.cs</Link>
-    </Compile>
-    <Compile Include="$(CommonPath)\Interop\Unix\System.Native\Interop.Stat.cs">
-      <Link>Common\Unix\System.Native\Interop.Stat.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup Condition=" ('$(TargetsUnknownUnix)' == 'true')">

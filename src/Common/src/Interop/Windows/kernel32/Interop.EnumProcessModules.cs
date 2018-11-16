@@ -5,12 +5,18 @@
 using Microsoft.Win32.SafeHandles;
 using System;
 using System.Runtime.InteropServices;
+using Custom.Raven.Microsoft.Win32.SafeHandles;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Kernel32
+    internal partial class Interop
     {
-        [DllImport(Libraries.Kernel32, CharSet = CharSet.Unicode, SetLastError = true, EntryPoint = "K32EnumProcessModules")]
-        internal static extern bool EnumProcessModules(SafeProcessHandle handle, IntPtr modules, int size, ref int needed);
+        internal partial class Kernel32
+        {
+            [DllImport(Interop.Libraries.Kernel32, CharSet = CharSet.Unicode, SetLastError = true,
+                EntryPoint = "K32EnumProcessModules")]
+            internal static extern bool EnumProcessModules(SafeProcessHandle handle, IntPtr modules, int size,
+                ref int needed);
+        }
     }
 }

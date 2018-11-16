@@ -5,12 +5,17 @@
 using Microsoft.Win32.SafeHandles;
 using System;
 using System.Runtime.InteropServices;
+using Custom.Raven.Microsoft.Win32.SafeHandles;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Kernel32
+    internal partial class Interop
     {
-        [DllImport(Libraries.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
-        internal static extern bool GetProcessWorkingSetSizeEx(SafeProcessHandle handle, out IntPtr min, out IntPtr max, out int flags);
+        internal partial class Kernel32
+        {
+            [DllImport(Interop.Libraries.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+            internal static extern bool GetProcessWorkingSetSizeEx(SafeProcessHandle handle, out IntPtr min,
+                out IntPtr max, out int flags);
+        }
     }
 }

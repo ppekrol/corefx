@@ -5,7 +5,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     /// <summary>
     /// This data structure contains information about a process that is collected

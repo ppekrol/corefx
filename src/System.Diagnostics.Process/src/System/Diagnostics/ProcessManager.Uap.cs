@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading;
 using Microsoft.Win32.SafeHandles;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     internal static partial class ProcessManager
     {

@@ -5,12 +5,18 @@
 using System;
 using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
+using Custom.Raven.Microsoft.Win32.SafeHandles;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Kernel32
+    internal partial class Interop
     {
-        [DllImport(Libraries.Kernel32, CharSet = CharSet.Unicode, SetLastError = true, BestFitMapping = false, EntryPoint = "K32GetModuleBaseNameW")]
-        internal static extern int GetModuleBaseName(SafeProcessHandle processHandle, IntPtr moduleHandle, [Out] char[] baseName, int size);
+        internal partial class Kernel32
+        {
+            [DllImport(Interop.Libraries.Kernel32, CharSet = CharSet.Unicode, SetLastError = true, BestFitMapping = false,
+                EntryPoint = "K32GetModuleBaseNameW")]
+            internal static extern int GetModuleBaseName(SafeProcessHandle processHandle, IntPtr moduleHandle,
+                [Out] char[] baseName, int size);
+        }
     }
 }

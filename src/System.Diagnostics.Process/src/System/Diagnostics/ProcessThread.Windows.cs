@@ -2,10 +2,13 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using Microsoft.Win32.SafeHandles;
 using System.ComponentModel;
+using Custom.Raven.Interoperability;
+using Custom.Raven.Microsoft.Win32.SafeHandles;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     public partial class ProcessThread
     {

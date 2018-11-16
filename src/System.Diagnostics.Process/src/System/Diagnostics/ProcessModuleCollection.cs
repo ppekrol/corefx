@@ -4,7 +4,7 @@
 
 using System.Collections;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     public class ProcessModuleCollection : ReadOnlyCollectionBase
     {

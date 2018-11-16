@@ -6,11 +6,14 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class User32
+    internal partial class Interop
     {
-        [DllImport(Libraries.User32, ExactSpelling = true, SetLastError = true, CharSet = CharSet.Unicode)]
-        public static extern int GetWindowTextW(IntPtr hWnd, [Out]StringBuilder lpString, int nMaxCount);
+        internal partial class User32
+        {
+            [DllImport(Interop.Libraries.User32, ExactSpelling = true, SetLastError = true, CharSet = CharSet.Unicode)]
+            public static extern int GetWindowTextW(IntPtr hWnd, [Out] StringBuilder lpString, int nMaxCount);
+        }
     }
 }

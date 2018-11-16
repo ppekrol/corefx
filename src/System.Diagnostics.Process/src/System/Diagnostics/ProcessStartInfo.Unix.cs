@@ -5,7 +5,7 @@
 using System;
 using System.Security;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     // We know of no way to achieve this on Unix, particularly providing the password
     // without a prompt. If we find a way, we should implement it. It may make more sense to provide

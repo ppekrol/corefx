@@ -5,7 +5,7 @@
 using System;
 using System.Text;
 
-namespace System.Text
+namespace Custom.Raven.System.Text
 {
     // If we find issues with this or if more libraries need this behavior we will revisit the solution.
     internal static partial class EncodingHelper

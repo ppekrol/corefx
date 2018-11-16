@@ -2,14 +2,17 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Microsoft.Win32.SafeHandles;
+using Custom.Raven.Interoperability;
+using Custom.Raven.Microsoft.Win32.SafeHandles;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     internal static partial class ProcessManager
     {

@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     internal static partial class ProcessManager
     {

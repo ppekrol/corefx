@@ -2,11 +2,12 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using Microsoft.Win32;
 using System.Collections.Generic;
 using System.IO;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     public sealed partial class ProcessStartInfo
     {
@@ -48,5 +49,7 @@ namespace System.Diagnostics
         }
 
         public bool UseShellExecute { get; set; }
+
+        public bool InheritHandles { get; set; } = true;
     }
 }

@@ -9,7 +9,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     public partial class Process : IDisposable
     {

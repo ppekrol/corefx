@@ -4,7 +4,7 @@
 
 using System.Diagnostics;
 
-namespace System
+namespace Custom.Raven.System
 {
     internal static class StringExtensions
     {

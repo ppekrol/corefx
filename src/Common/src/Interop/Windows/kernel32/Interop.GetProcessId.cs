@@ -4,12 +4,16 @@
 
 using Microsoft.Win32.SafeHandles;
 using System.Runtime.InteropServices;
+using Custom.Raven.Microsoft.Win32.SafeHandles;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Kernel32
+    internal partial class Interop
     {
-        [DllImport(Libraries.Kernel32)]
-        public static extern int GetProcessId(SafeProcessHandle nativeHandle);
+        internal partial class Kernel32
+        {
+            [DllImport(Interop.Libraries.Kernel32)]
+            public static extern int GetProcessId(SafeProcessHandle nativeHandle);
+        }
     }
 }

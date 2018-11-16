@@ -4,7 +4,7 @@
 
 using System.Diagnostics;
 
-namespace System.IO
+namespace Custom.Raven.System.IO
 {
     /// <summary>
     /// Provides a string parser that may be used instead of String.Split 

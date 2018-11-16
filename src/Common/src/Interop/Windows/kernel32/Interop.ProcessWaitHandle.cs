@@ -5,32 +5,36 @@
 using Microsoft.Win32.SafeHandles;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Custom.Raven.Microsoft.Win32.SafeHandles;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Kernel32
+    internal partial class Interop
     {
-        internal sealed class ProcessWaitHandle : WaitHandle
+        internal partial class Kernel32
         {
-            internal ProcessWaitHandle(SafeProcessHandle processHandle)
+            internal sealed class ProcessWaitHandle : WaitHandle
             {
-                SafeWaitHandle waitHandle = null;
-                SafeProcessHandle currentProcHandle = Interop.Kernel32.GetCurrentProcess();
-                bool succeeded = Interop.Kernel32.DuplicateHandle(
-                    currentProcHandle,
-                    processHandle,
-                    currentProcHandle,
-                    out waitHandle,
-                    0,
-                    false,
-                    Interop.Kernel32.HandleOptions.DUPLICATE_SAME_ACCESS);
-
-                if (!succeeded)
+                internal ProcessWaitHandle(SafeProcessHandle processHandle)
                 {
-                    Marshal.ThrowExceptionForHR(Marshal.GetHRForLastWin32Error());
-                }
+                    SafeWaitHandle waitHandle = null;
+                    SafeProcessHandle currentProcHandle = Interop.Kernel32.GetCurrentProcess();
+                    bool succeeded = Interop.Kernel32.DuplicateHandle(
+                        currentProcHandle,
+                        processHandle,
+                        currentProcHandle,
+                        out waitHandle,
+                        0,
+                        false,
+                        Interop.Kernel32.HandleOptions.DUPLICATE_SAME_ACCESS);
 
-                this.SetSafeWaitHandle(waitHandle);
+                    if (!succeeded)
+                    {
+                        Marshal.ThrowExceptionForHR(Marshal.GetHRForLastWin32Error());
+                    }
+
+                    this.SetSafeWaitHandle(waitHandle);
+                }
             }
         }
     }

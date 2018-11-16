@@ -2,15 +2,18 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using Microsoft.Win32.SafeHandles;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading;
+using Custom.Raven.Microsoft.Win32.SafeHandles;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     /// <devdoc>
     ///    <para>
@@ -785,7 +788,9 @@ namespace System.Diagnostics
         private void CompletionCallback(object waitHandleContext, bool wasSignaled)
         {
             Debug.Assert(waitHandleContext != null, "Process.CompletionCallback called with no waitHandleContext");
+#pragma warning disable CA2002 // Do not lock on objects with weak identity.
             lock (this)
+#pragma warning restore CA2002 // Do not lock on objects with weak identity.
             {
                 // Check the exited event that we get from the threadpool
                 // matches the event we are waiting for.
@@ -848,7 +853,9 @@ namespace System.Diagnostics
                     // We need to lock to ensure we don't run concurrently with CompletionCallback.
                     // Without this lock we could reset _raisedOnExited which causes CompletionCallback to
                     // raise the Exited event a second time for the same process.
+#pragma warning disable CA2002 // Do not lock on objects with weak identity.
                     lock (this)
+#pragma warning restore CA2002 // Do not lock on objects with weak identity.
                     {
                         // This sets _waitHandle to null which causes CompletionCallback to not emit events.
                         StopWatchingForExit();
@@ -1104,7 +1111,9 @@ namespace System.Diagnostics
         {
             if (!_raisedOnExited)
             {
+#pragma warning disable CA2002 // Do not lock on objects with weak identity.
                 lock (this)
+#pragma warning restore CA2002 // Do not lock on objects with weak identity.
                 {
                     if (!_raisedOnExited)
                     {
@@ -1284,7 +1293,9 @@ namespace System.Diagnostics
                 RegisteredWaitHandle rwh = null;
                 WaitHandle wh = null;
 
+#pragma warning disable CA2002 // Do not lock on objects with weak identity.
                 lock (this)
+#pragma warning restore CA2002 // Do not lock on objects with weak identity.
                 {
                     if (_watchingForExit)
                     {

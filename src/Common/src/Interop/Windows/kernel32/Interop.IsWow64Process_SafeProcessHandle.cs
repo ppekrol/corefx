@@ -4,12 +4,16 @@
 
 using Microsoft.Win32.SafeHandles;
 using System.Runtime.InteropServices;
+using Custom.Raven.Microsoft.Win32.SafeHandles;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Kernel32
+    internal partial class Interop
     {
-        [DllImport(Libraries.Kernel32, SetLastError = true)]
-        internal static extern bool IsWow64Process(SafeProcessHandle hProcess, ref bool Wow64Process);
+        internal partial class Kernel32
+        {
+            [DllImport(Interop.Libraries.Kernel32, SetLastError = true)]
+            internal static extern bool IsWow64Process(SafeProcessHandle hProcess, ref bool Wow64Process);
+        }
     }
 }

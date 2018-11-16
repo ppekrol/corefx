@@ -4,13 +4,16 @@
 
 using System.Runtime.InteropServices;
 
-internal partial class Interop
+namespace Raven.Interoperability
 {
-    internal partial class Sys
+    internal partial class Interop
     {
-        internal delegate void SigChldCallback(bool reapAll);
+        internal partial class Sys
+        {
+            internal delegate void SigChldCallback(bool reapAll);
 
-        [DllImport(Libraries.SystemNative, EntryPoint = "SystemNative_RegisterForSigChld")]
-        internal static extern bool RegisterForSigChld(SigChldCallback handler);
+            [DllImport(Interop.Libraries.SystemNative, EntryPoint = "SystemNative_RegisterForSigChld")]
+            internal static extern bool RegisterForSigChld(SigChldCallback handler);
+        }
     }
 }

@@ -5,7 +5,7 @@
 using Microsoft.Win32.SafeHandles;
 using System.Threading;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     internal sealed class ProcessWaitHandle : WaitHandle
     {

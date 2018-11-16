@@ -4,55 +4,59 @@
 
 using System.Runtime.InteropServices;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Kernel32
+    internal partial class Interop
     {
-        [DllImport(Libraries.Kernel32, CharSet = CharSet.Unicode, EntryPoint = "GetCPInfoExW")]
-        private extern static unsafe int GetCPInfoExW(uint CodePage, uint dwFlags, CPINFOEXW* lpCPInfoEx);
-
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
-        private unsafe struct CPINFOEXW
+        internal partial class Kernel32
         {
-            internal uint MaxCharSize;
-            internal fixed byte DefaultChar[2];
-            internal fixed byte LeadByte[12];
-            internal char UnicodeDefaultChar;
-            internal uint CodePage;
-            internal fixed byte CodePageName[260];
-        }
+            [DllImport(Interop.Libraries.Kernel32, CharSet = CharSet.Unicode, EntryPoint = "GetCPInfoExW")]
+            private extern static unsafe int GetCPInfoExW(uint CodePage, uint dwFlags, CPINFOEXW* lpCPInfoEx);
 
-        internal static unsafe int GetLeadByteRanges(int codePage, byte[] leadByteRanges)
-        {
-            int count = 0;
-            CPINFOEXW cpInfo;
-            if (GetCPInfoExW((uint) codePage, 0, &cpInfo) != 0)
+            [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+            private unsafe struct CPINFOEXW
             {
-                // we don't care about the last 2 bytes as those are nulls
-                for (int i=0; i<10 && leadByteRanges[i] != 0; i+=2)
+                internal uint MaxCharSize;
+                internal fixed byte DefaultChar[2];
+                internal fixed byte LeadByte[12];
+                internal char UnicodeDefaultChar;
+                internal uint CodePage;
+                internal fixed byte CodePageName[260];
+            }
+
+            internal static unsafe int GetLeadByteRanges(int codePage, byte[] leadByteRanges)
+            {
+                int count = 0;
+                CPINFOEXW cpInfo;
+                if (GetCPInfoExW((uint)codePage, 0, &cpInfo) != 0)
                 {
-                    leadByteRanges[i] = cpInfo.LeadByte[i];
-                    leadByteRanges[i+1] = cpInfo.LeadByte[i+1];
-                    count++;
+                    // we don't care about the last 2 bytes as those are nulls
+                    for (int i = 0; i < 10 && leadByteRanges[i] != 0; i += 2)
+                    {
+                        leadByteRanges[i] = cpInfo.LeadByte[i];
+                        leadByteRanges[i + 1] = cpInfo.LeadByte[i + 1];
+                        count++;
+                    }
                 }
-            }
-            return count;
-        }
 
-        internal static unsafe bool TryGetACPCodePage(out int codePage)
-        {
-            // Note: GetACP is not available in the Windows Store Profile, but calling
-            // GetCPInfoEx with the value CP_ACP (0) yields the same result.
-            CPINFOEXW cpInfo;
-            if (GetCPInfoExW(CP_ACP, 0, &cpInfo) != 0)
-            {
-                codePage = (int)cpInfo.CodePage;
-                return true;
+                return count;
             }
-            else
+
+            internal static unsafe bool TryGetACPCodePage(out int codePage)
             {
-                codePage = 0;
-                return false;
+                // Note: GetACP is not available in the Windows Store Profile, but calling
+                // GetCPInfoEx with the value CP_ACP (0) yields the same result.
+                CPINFOEXW cpInfo;
+                if (GetCPInfoExW(CP_ACP, 0, &cpInfo) != 0)
+                {
+                    codePage = (int)cpInfo.CodePage;
+                    return true;
+                }
+                else
+                {
+                    codePage = 0;
+                    return false;
+                }
             }
         }
     }

@@ -5,14 +5,17 @@
 using System;
 using System.Runtime.InteropServices;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class User32
+    internal partial class Interop
     {
-        [DllImport(Libraries.User32, ExactSpelling = true)]
-        public static extern int GetWindowThreadProcessId(IntPtr handle, out int processId);
+        internal partial class User32
+        {
+            [DllImport(Interop.Libraries.User32, ExactSpelling = true)]
+            public static extern int GetWindowThreadProcessId(IntPtr handle, out int processId);
 
-        [DllImport(Libraries.User32, ExactSpelling = true)]
-        public static extern int GetWindowThreadProcessId(HandleRef handle, out int processId);
+            [DllImport(Interop.Libraries.User32, ExactSpelling = true)]
+            public static extern int GetWindowThreadProcessId(HandleRef handle, out int processId);
+        }
     }
 }

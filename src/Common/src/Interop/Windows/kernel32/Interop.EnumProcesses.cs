@@ -4,11 +4,15 @@
 
 using System.Runtime.InteropServices;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Kernel32
+    internal partial class Interop
     {
-        [DllImport(Libraries.Kernel32, CharSet = CharSet.Unicode, SetLastError = true, EntryPoint = "K32EnumProcesses")]
-        internal static extern bool EnumProcesses(int[] processIds, int size, out int needed);
+        internal partial class Kernel32
+        {
+            [DllImport(Interop.Libraries.Kernel32, CharSet = CharSet.Unicode, SetLastError = true,
+                EntryPoint = "K32EnumProcesses")]
+            internal static extern bool EnumProcesses(int[] processIds, int size, out int needed);
+        }
     }
 }

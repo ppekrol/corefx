@@ -4,12 +4,17 @@
 
 using Microsoft.Win32.SafeHandles;
 using System.Runtime.InteropServices;
+using Custom.Raven.Microsoft.Win32.SafeHandles;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Advapi32
+    internal partial class Interop
     {
-        [DllImport(Libraries.Advapi32, CharSet = CharSet.Unicode, SetLastError = true)]
-        internal static extern bool OpenProcessToken(SafeProcessHandle ProcessHandle, int DesiredAccess, out SafeTokenHandle TokenHandle);
+        internal partial class Advapi32
+        {
+            [DllImport(Interop.Libraries.Advapi32, CharSet = CharSet.Unicode, SetLastError = true)]
+            internal static extern bool OpenProcessToken(SafeProcessHandle ProcessHandle, int DesiredAccess,
+                out SafeTokenHandle TokenHandle);
+        }
     }
 }

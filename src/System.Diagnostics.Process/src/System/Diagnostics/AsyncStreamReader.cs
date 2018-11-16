@@ -12,14 +12,16 @@
 **
 ===========================================================*/
 
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     internal sealed class AsyncStreamReader
     {

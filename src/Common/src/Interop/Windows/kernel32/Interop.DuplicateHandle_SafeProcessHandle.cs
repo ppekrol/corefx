@@ -5,32 +5,36 @@
 using Microsoft.Win32.SafeHandles;
 using System;
 using System.Runtime.InteropServices;
+using Custom.Raven.Microsoft.Win32.SafeHandles;
 
-internal partial class Interop
+namespace Custom.Raven.Interoperability
 {
-    internal partial class Kernel32
+    internal partial class Interop
     {
-        [DllImport(Libraries.Kernel32, SetLastError = true, BestFitMapping = false)]
-        internal static extern bool DuplicateHandle(
-            SafeProcessHandle hSourceProcessHandle,
-            SafeHandle hSourceHandle,
-            SafeProcessHandle hTargetProcess,
-            out SafeFileHandle targetHandle,
-            int dwDesiredAccess,
-            bool bInheritHandle,
-            int dwOptions
-        );
+        internal partial class Kernel32
+        {
+            [DllImport(Interop.Libraries.Kernel32, SetLastError = true, BestFitMapping = false)]
+            internal static extern bool DuplicateHandle(
+                SafeProcessHandle hSourceProcessHandle,
+                SafeHandle hSourceHandle,
+                SafeProcessHandle hTargetProcess,
+                out SafeFileHandle targetHandle,
+                int dwDesiredAccess,
+                bool bInheritHandle,
+                int dwOptions
+            );
 
-        [DllImport(Libraries.Kernel32, SetLastError = true, BestFitMapping = false)]
-        internal static extern bool DuplicateHandle(
-            SafeProcessHandle hSourceProcessHandle,
-            SafeHandle hSourceHandle,
-            SafeProcessHandle hTargetProcess,
-            out SafeWaitHandle targetHandle,
-            int dwDesiredAccess,
-            bool bInheritHandle,
-            int dwOptions
-        );
+            [DllImport(Interop.Libraries.Kernel32, SetLastError = true, BestFitMapping = false)]
+            internal static extern bool DuplicateHandle(
+                SafeProcessHandle hSourceProcessHandle,
+                SafeHandle hSourceHandle,
+                SafeProcessHandle hTargetProcess,
+                out SafeWaitHandle targetHandle,
+                int dwDesiredAccess,
+                bool bInheritHandle,
+                int dwOptions
+            );
 
+        }
     }
 }

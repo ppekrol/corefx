@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 
+using System;
 #if FEATURE_REGISTRY
 using Microsoft.Win32;
 #endif
@@ -12,8 +13,9 @@ using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Threading;
+using Custom.Raven.Interoperability;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     internal sealed class PerformanceCounterLib
     {
@@ -124,7 +126,7 @@ namespace System.Diagnostics
                                 waitSleep = 10;
                             else
                             {
-                                System.Threading.Thread.Sleep(waitSleep);
+                                Thread.Sleep(waitSleep);
                                 waitSleep *= 2;
                             }
                         }
@@ -262,7 +264,7 @@ namespace System.Diagnostics
                                 }
                                 else
                                 {
-                                    System.Threading.Thread.Sleep(waitSleep);
+                                    Thread.Sleep(waitSleep);
                                     waitSleep *= 2;
                                 }
                                 break;

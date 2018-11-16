@@ -2,14 +2,18 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Text;
+using Custom.Raven.System.Collections.Specialized;
+using SystemEnvironment = global::System.Environment;
 
-namespace System.Diagnostics
+namespace Custom.Raven.System.Diagnostics
 {
     /// <devdoc>
     ///     A set of values used to specify a process to start.  This is
@@ -85,7 +89,7 @@ namespace System.Diagnostics
             {
                 if (_environmentVariables == null)
                 {
-                    IDictionary envVars = System.Environment.GetEnvironmentVariables();
+                    IDictionary envVars = SystemEnvironment.GetEnvironmentVariables();
 
 #pragma warning disable 0429 // CaseSensitiveEnvironmentVaribles is constant but varies depending on if we build for Unix or Windows
                     _environmentVariables = new DictionaryWrapper(new Dictionary<string, string>(

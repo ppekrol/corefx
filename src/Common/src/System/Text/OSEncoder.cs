@@ -6,7 +6,7 @@ using System;
 using System.Text;
 using System.Diagnostics;
 
-namespace System.Text
+namespace Custom.Raven.System.Text
 {
     internal sealed class OSEncoder : Encoder
     {
